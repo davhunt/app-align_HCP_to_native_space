@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#PBS -l nodes=1:ppn=1, walltime=00:05:00
+
+raw_dir=$(jq -r .raw_dir config.json)
+bold=$(jq -r .bold config_json)
+sbref=$(jq -r .sbreg config_json)
+
+mkdir aligned_vols
+
+time singularity exec -e docker://brainlife/fsl:5.0.9 ./align.sh "$raw_dir" "$bold" "$sbref"
