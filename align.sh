@@ -12,6 +12,11 @@ flirt -interp spline \
 -applyisoxfm 1.6 \
 -out ./T1w_acpc_dc_restore.1.6.nii.gz
 
+echo $bold
+echo $sbref
+echo $raw_dir
+ls -la $(dirname $bold)
+
 applywarp --interp=spline \
 -i "$bold" \
 -r ./T1w_acpc_dc_restore.1.6.nii.gz \
