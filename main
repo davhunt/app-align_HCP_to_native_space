@@ -6,7 +6,7 @@
 
 raw_dir=$(jq -r .raw_dir config.json)
 bold=$(jq -r .bold config.json)
-sbref=$(jq -r .sbreg config.json)
+sbref=$(jq -r .sbref config.json)
 
 mkdir aligned_vols
 
