@@ -5,8 +5,8 @@
 #PBS -V
 
 raw_dir=$(jq -r .raw_dir config.json)
-bold=$(jq -r .bold config_json)
-sbref=$(jq -r .sbreg config_json)
+bold=$(jq -r .bold config.json)
+sbref=$(jq -r .sbreg config.json)
 
 mkdir aligned_vols
 
