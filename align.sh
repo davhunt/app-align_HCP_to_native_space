@@ -4,15 +4,20 @@
 #
 # David Hunt 2019, BrainLife.io Team
 
-raw_dir="$1"
-bold="$2"
-sbref="$3"
+#raw_dir="$1"
+#bold="$2"
+#sbref="$3"
+
+t1="$1"
+warp="$2"
+bold="$3"
+sbref="$4"
 
 # Resample the T1w data to 1.6 isotropic resolution
 # This is needed to map to the 7T BOLD data
 flirt -interp spline \
--in "$raw_dir"/T1w_acpc_dc_restore.nii.gz \
--ref "$raw_dir"/T1w_acpc_dc_restore.nii.gz \
+-in "$t1" \
+-ref "$t1" \
 -applyisoxfm 1.6 \
 -out ./T1w_acpc_dc_restore.1.6.nii.gz
 
@@ -22,7 +27,7 @@ flirt -interp spline \
 applywarp --interp=spline \
 -i "$bold" \
 -r ./T1w_acpc_dc_restore.1.6.nii.gz \
--w "$raw_dir"/standard2acpc_dc.nii.gz \
+-w "$warp" \
 -o ./aligned_vols/bold.nii.gz
 
 # Also warp the SBREF file to the same native (subject space).
@@ -31,5 +36,5 @@ applywarp --interp=spline \
 applywarp --interp=spline \
 -i "$sbref" \
 -r ./T1w_acpc_dc_restore.1.6.nii.gz \
--w "$raw_dir"/standard2acpc_dc.nii.gz \
+-w "$warp" \
 -o ./aligned_vols/sbref.nii.gz

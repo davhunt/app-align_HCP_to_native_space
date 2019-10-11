@@ -4,10 +4,11 @@
 #PBS -N app-align_HCP_to_native_space
 #PBS -V
 
-raw_dir=$(jq -r .raw_dir config.json)
+t1=$(jq -r .t1 config.json)
+warp=$(jq -r .warp config.json)
 bold=$(jq -r .bold config.json)
 sbref=$(jq -r .sbref config.json)
 
 mkdir aligned_vols
 
-time singularity exec -e docker://brainlife/fsl:5.0.9 ./align.sh "$raw_dir" "$bold" "$sbref"
+time singularity exec -e docker://brainlife/fsl:5.0.9 ./align.sh "$t1" "$warp" "$bold" "$sbref"

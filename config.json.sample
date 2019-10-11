@@ -1,5 +1,6 @@
 {
+        "t1": "testdata/t1.nii.gz",
+        "warp": "testdata/warp.nii.gz",
 	"bold": "testdata/bold.nii.gz",
-	"sbref": "testdata/sbref.nii.gz",
-	"raw_dir": "/N/u/davhunt/Carbonate/111312_3T_Structural_preproc/raw"
+	"sbref": "testdata/sbref.nii.gz"
 }
